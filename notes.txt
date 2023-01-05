@@ -1,0 +1,22 @@
+# create virtual environment
+python3 -m venv env
+
+# install requirements
+python3 -m pip install -r requirements.txt
+
+#create project
+django-admin startproject core .
+
+
+
+#create app
+python3 manage.py startapp project
+
+#add app to INSTALLED_APPS
+#create folder fixture
+#add json fixture file
+
+#How to create custom django-admin commands¶
+#
+
+MINUTO 2:02
