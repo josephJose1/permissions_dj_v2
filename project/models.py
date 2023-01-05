@@ -15,6 +15,7 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse("project:project_detail", args=[self.slug])
 
+    #add new custom permission from here
     class Meta:
         permissions = [("can_add_new_project", "can add new project")]
 
