@@ -6,6 +6,8 @@ from .forms import ProjectForm
 from .models import Project
 
 from django.contrib.auth.decorators import login_required, permission_required
+from guardian.shortcuts import get_objects_for_user
+
 
 def index(request):
     return render(request, "index.html")
@@ -13,7 +15,9 @@ def index(request):
 @login_required
 @permission_required("project.view_project")
 def project_listing(request):
-    project_data = Project.objects.all()
+    #project_data = Project.objects.all()# we grab all of the data, but we only want the objs associated to the new 
+    project_data = get_objects_for_user(request.user, 'project.dg_view_project', klass=Project)
+    print(request.user)
     return render(request, "project.html", {"projects": project_data})
 
 @login_required
